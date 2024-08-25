@@ -1,0 +1,470 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    --color-primary: #9400D3;
+    --color-secondary: #bbdbff;
+    --color-tertiary: #4B0082;
+    --color-text: #fcf2f2;
+    --color-text-2: #292929;
+    --color-btn-detail: #9932CC;
+    --color-btn-edit: #F0E68C;
+    --color-btn-edit-hover: #BDB76B;
+    --color-btn-delete: #d33838;
+    --color-btn-delete-hover: #610000;
+    --color-btn-save: #4CAF50;
+    --color-btn-save-hover: #005e00;
+}
+
+body {
+    background: var(--color-secondary);
+    overflow-x: hidden;
+}
+
+.container_principal {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+nav {
+    background: var(--color-primary);
+    height: 60px;
+    position: relative;
+}
+
+.container-navbar {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    line-height: 60px;
+    z-index: 100;
+}
+
+.container-navbar-logo {
+    width: 100%;
+    max-width: 50px;   
+    cursor: pointer;
+}
+
+.container-navbar-logo img {
+    margin: 5px;
+    width: 100%;
+    height: auto; 
+}
+
+.links .link {
+    display: inline-block;
+}
+
+.links .link a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 25px;
+    transition: .3s;
+}
+
+.links .link a:hover {
+    color: var(--color-text-2);
+}
+
+.toggle {
+    color: var(--color-text);
+    margin-right: 30px;
+    font-size: 30px;
+    transform: rotate(90deg);
+    cursor: pointer;
+    transition: .3s;
+    display: none;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+h1,h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center
+}
+
+h4 {
+    font-size: 16px;
+    text-align: center
+}
+
+.container {
+    width: 100%; 
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+}
+
+@media screen and (max-width: 796px){
+    .container-navbar {
+        justify-content: space-between;
+    }
+
+    .toggle {
+        display: inline-block;
+    }
+
+    .links {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background: var(--color-primary);
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        z-index: 999;
+        top: -100vh;
+        transition: .5s;
+    }
+
+    .active {
+        top: 60px;
+    }
+
+    .links .link:hover {
+        text-shadow: var(--color-tertiary);
+        font-weight: bold;
+    }
+    
+}
+
+/* paciente y consumos list */
+.list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-text-2);
+    border-radius: 10px;
+    list-style-type: none;
+    width: 50%;
+    min-width: 317px;
+}
+
+/* aplica a todas menos a la ultima */
+.list li:not(:last-child) {
+    border-bottom: 1px solid var(--color-text-2);
+}
+
+.list li {
+    padding: 15px;
+    min-width: 317px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* btn  */
+.btn {
+    font-weight: 200;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid var(--color-text-2);
+    border-radius: 5px;
+}
+
+/* deshabilitar btn */
+.btn-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-detail {
+    padding: 5px 15px;
+    background-color: var(--color-btn-detail);
+    color: var(--color-text);
+}
+
+.btn-edit {
+    background-color: var(--color-btn-edit);
+    color: var(--color-text-2);
+}
+
+.btn-delete {
+    background-color: var(--color-btn-delete);
+    color: var(--color-text);
+}
+
+/* para el hover */
+.btn-detail:hover {
+    padding: 5px 15px;
+    background-color: var(--color-tertiary);
+    border: 1px solid var(--color-btn-detail);
+}
+
+.btn-edit:hover {
+    background-color: var(--color-btn-edit-hover);
+    border: 1px solid var(--color-btn-edit);
+}
+
+.btn-delete:hover {
+    background-color: var(--color-btn-delete-hover);
+    border: 1px solid var(--color-btn-delete);
+}
+
+/* paginación de la lista */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.step-links a {
+    padding: 5px;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-align: center;
+    text-decoration: none;
+}
+
+.step-links a:hover {
+    color: var(--color-btn-edit);
+}
+
+/* estilos para el footer */
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    text-align: center;
+    padding: 10px;
+    width: 100%
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+/*Barra de busqueda  */
+.search {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.by-date {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 251px;
+    padding: 5px 0;
+    border: none;
+}
+
+.by-date input {
+    width: 25%;
+    min-width: 50px;
+    padding: 5px 0;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.by-date input:focus {
+    padding-left: 10px;
+    border: 1px solid var(--color-primary)
+}
+
+.by-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.by-all input {
+    width: 80%;
+    min-width: 251px;
+    padding: 5px 0;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    padding-left: 10px;
+}
+
+.by-all input:focus {
+    padding-left: 10px;
+    border: 1px solid var(--color-primary)
+}
+
+.by-all button {
+    width: 20%;
+    min-width: 65px;
+    border-radius: 0 5px 5px 0;
+}
+
+/* para costos totales */
+.by-total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.by-total input {
+    width: 100%;
+    min-width: 251px;
+    padding: 5px 0;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.by-total input:focus {
+    padding-left: 10px;
+    border: 1px solid var(--color-primary)
+}
+
+.btns-totals {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    padding: none;
+}
+
+.btn-total {
+    width: 100px; 
+    height: 30px; 
+    padding: 5px; 
+    border: none; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px; 
+    cursor: pointer; 
+    }
+
+
+/* botones auxiliares de mostrar todo y añadir */
+.btn-aux {
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: none;
+}
+
+.btn-aux a {
+    width: 80%;
+}
+
+.btn-aux a:first-child {
+    min-width: 157px;
+}
+
+.btn-aux a:last-child {
+    min-width: 150px;
+}
+
+/* tabla de confirmación de eliminación */
+table {
+    width: 50%;
+    min-width: 340px;
+    border-radius: 10px;
+}
+th, td {
+    border: 1px solid var(--color-text-2);
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: var(--color-secondary);
+}
+
+/* el input y el enlace (a) de la tabla confirmación borrar */
+.confir-delete {
+    width: 150px; 
+    height: 40px; 
+    padding: 10px; 
+    border: none; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    border-radius: 5px;
+    gap: 10px;
+    font-size: 16px; 
+    cursor: pointer; 
+    }
+
+.affirmative {
+    background-color: var(--color-btn-delete);
+    color: var(--color-text);
+}
+
+.affirmative:hover {
+    background-color: #750000;
+    color: var(--color-text);
+}
+
+.denied {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.denied:hover {
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+}
+
+/* del mensaje de eliminar */
+.alert-delete {
+    background: var(--color-btn-delete);
+    color: var(--color-text);
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+/* formulario de logout */
+.form_navbar {
+    padding: 0;
+    width: 50%; 
+}
+
+.button_form {
+    color: var(--color-text);
+    background-color: inherit;
+    border: none;
+    margin: 0 25px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.button_form:hover {
+    color: var(--color-text-2);
+    background-color: var(--color-primary);
+}
+
+/* whatsapp */
+.whatsapp-link {
+    text-decoration: none;
+    color: var(--color-text-2);
+}
+
+
