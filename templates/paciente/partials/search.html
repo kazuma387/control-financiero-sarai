@@ -1,0 +1,11 @@
+<form class='search' action="{% url 'paciente' %}" method='GET'>
+    <div class="by-date">
+        <input type="number" name="year" placeholder='Año' min="2024" value="{{ year|default:'' }}" minlength="4" maxlength="4" pattern="\d{4}" oninput="this.value=this.value.slice(0,4)">
+        <input type="number" name="month" placeholder='Mes' min="1" max="12" value="{{ month|default:'' }}">
+        <input type="number" name="day" placeholder='Día' min="1" max="31" value="{{ day|default:'' }}">
+    </div>
+    <div class="by-all">
+        <input type="text" name="search" placeholder='Buscar paciente...' value="{{ search_query|default:'' }}">
+        <button type="submit" class='btn btn-detail'>Buscar</button>
+    </div>
+</form>

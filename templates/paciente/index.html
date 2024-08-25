@@ -1,0 +1,38 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %} Pacientes {% endblock  %}
+
+{% block 'content' %}
+    <div class="container">
+        {#para visulizar el mensaje #}
+        {% include "paciente/partials/msg_delete.html" %}
+
+        <h1>Control de Pacientes</h1>
+
+        {% include "paciente/partials/search.html" %}
+
+        <span class='btn-aux'>
+            <a href="{% url "paciente" %}" class='btn btn-detail'>Ver todos</a>
+            {% if perms.app.add_paciente %}
+                <a href="{% url "paciente_add" %}" class='btn btn-edit'>Añadir</a>
+            {% else %}
+                <a href="javascript:void(0);" class='btn btn-edit btn-disabled' title="No tienes permiso para añadir">Añadir</a>
+            {% endif %}
+        </span>
+
+        {% include "paciente/partials/list_paciente.html" %}
+        <br>
+        {% if is_search and total_costos != 0 %}
+            <table>
+                <tr>
+                    <th>Pacientes atendidos:</th>
+                    <td>{{ total_pacientes }}</td>
+                </tr>
+                <tr>
+                    <th>Total de Ingresos:</th>
+                    <td>{{ total_costos|floatformat:2 }} COL$</td>
+                </tr>
+            </table>
+        {% endif %}
+    </div>
+{% endblock  %}

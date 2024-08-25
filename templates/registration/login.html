@@ -1,0 +1,27 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %} Login {% endblock  %}
+
+
+{% block 'styles' %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/form.css" %}">
+{% endblock  %}
+
+{% block 'content' %}
+<div class="container">
+    <h3>LOGIN</h3>
+    {#<!-- Renderiza el LoginForm -->#}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {#<!-- Agrega un botón de envío -->#}
+        {#<!-- Enlaces a Inicio y Registrarse -->#}
+    <div class="order">
+        <a href="{% url 'index' %}">Inicio</a>
+        <button class="submit" type="submit">Iniciar Sesión</button>
+    </div>
+    </form>
+    
+</div>
+{% endblock  %}

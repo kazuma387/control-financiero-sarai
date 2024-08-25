@@ -1,0 +1,46 @@
+<ul class='list'>
+    {% for paciente in pacientes %}
+    <li>
+        {{paciente.nombre}}
+        <span>
+            <a href="{% url "paciente_view" id=paciente.id  %}" class='btn btn-detail'>Ver</a>
+
+            {% if perms.control_financiero.change_paciente %}
+                <a href="{% url "paciente_edit" id=paciente.id  %}" class='btn btn-edit'>Editar</a>
+            {% else %}
+                <a href="javascript:void(0);" class='btn btn-edit btn-disabled' title="No tienes permiso para editar">Editar</a>
+            {% endif %}
+
+            {% if perms.control_financiero.delete_paciente %}
+                <a href="{% url "paciente_delete" id=paciente.id  %}" class='btn btn-delete'>Borrar</a>
+            {% else %}
+                <a href="javascript:void(0);" class='btn btn-delete btn-disabled' title="No tienes permiso para borrar">Borrar</a>
+            {% endif %}
+        </span>
+    </li>
+    {% endfor %}
+
+    {# para visualizar el mensaje de no encontrado #}
+    {% if no_results_message %}
+        <li>{{ no_results_message }}</li>
+    {% endif %}
+
+    {# para visualizar la paginación #}
+    <div class="pagination">
+        <span class="step-links">
+            {% if pacientes.has_previous %}
+                <a href="?page=1">Primera</a>
+                <a href="?page={{ pacientes.previous_page_number }}&search={{ search_query }}">Anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ pacientes.number }} de {{ pacientes.paginator.num_pages }}
+            </span>
+    
+            {% if pacientes.has_next %}
+                <a href="?page={{ pacientes.next_page_number }}&search={{ search_query }}">Siguiente</a>
+                <a href="?page={{ pacientes.paginator.num_pages }}&search={{ search_query }}">Última</a>
+            {% endif %}
+        </span>
+    </div>
+</ul>

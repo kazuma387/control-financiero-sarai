@@ -1,0 +1,63 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %} Total de Costos {% endblock %}
+
+{% block 'content' %}
+<div class="container">
+    <h1>Totales</h1>
+
+    <form method="get" action="{% url 'total_costos' %}">
+        <h4>Fecha:</h4>
+        <div class="by-date">
+            <input type="number" name="year" placeholder='Año' min="2024" value="{{ year|default:'' }}" minlength="4" maxlength="4" pattern="\d{4}" oninput="this.value=this.value.slice(0,4)">
+            <input type="number" name="month" placeholder='Mes' min="1" max="12" value="{{ month|default:'' }}">
+            <input type="number" name="day" placeholder='Día' min="1" max="31" value="{{ day|default:'' }}">
+        </div>
+        <h4>Búsqueda general:</h4>
+        <div class="by-total">
+            <input type="text" name="search_paciente" value="{{ search_paciente }}" placeholder="Buscar paciente...">
+            <input type="text" name="search_consumo" value="{{ search_consumo }}" placeholder="Buscar consumo...">
+        </div>
+        <div class="btns-totals">
+            <a href="{% url 'total_costos' %}" class='btn-total btn-edit'>Reset</a>
+            <button class="btn-total btn-detail" type="submit">Buscar</button>
+        </div>
+    </form>
+
+    {% if is_search %}
+        <h2>Resultados de la búsqueda</h2>
+        <table>
+            {% if year or month or day %}
+                <tr>
+                    <th>Fecha:</th>
+                    <td>{% if day %}{{ day }}/{% endif %}{% if month %}{{ month }}/{% endif %}{% if year %}{{ year }}{% endif %}</td>
+                </tr>
+            {% endif %}
+            {% if search_paciente %}
+                <tr>
+                    <th>Búsqueda por paciente:</th>
+                    <td>{{search_paciente}}</td>
+                </tr>
+            {% endif %}
+            {% if search_consumo %}
+                <tr>
+                    <th>Búsqueda por gastos:</th>
+                    <td>{{ search_consumo }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <th>Total de Ingresos:</th>
+                <td>{{ total_pacientes|floatformat:2 }} COL$</td>
+            </tr>
+            <tr>
+                <th>Total de Gastos:</th>
+                <td>{{ total_consumos|floatformat:2 }} COL$</td>
+            </tr>
+            <tr>
+                <th>Total General:</th>
+                <td>{{ total_general|floatformat:2 }} COL$</td>
+            </tr>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

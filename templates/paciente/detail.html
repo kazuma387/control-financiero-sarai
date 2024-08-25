@@ -1,0 +1,56 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %} Paciente {{ paciente }} {% endblock  %}
+
+{% block 'content' %}
+    <div class="container">
+        <span class='btn-aux'>
+            <a href="{% url "paciente" %}" class='btn btn-detail'>Volver atrás</a>
+        </span>
+
+        <table>
+            <tr>
+                <th>Nombre:</th>
+                <td>{{paciente.nombre}}</td>
+            </tr>
+            <tr>
+                <th>Apellido:</th>
+                <td>{{paciente.apellido}}</td>
+            </tr>
+            <tr>
+                <th>Cédula:</th>
+                <td>{{paciente.cedula}}</td>
+            </tr>
+            <tr>
+                <th>Sexo:</th>
+                <td>{{paciente.sexo}}</td>
+            </tr>
+            <tr>
+                <th>Teléfono:</th>
+                <td>
+                    <a href="{% url 'whatsapp_redirect' paciente.id %}" target="_blank" class="whatsapp-link">
+                    {{paciente.telefono}}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th>Procedimiento:</th>
+                <td>{{paciente.procedimiento}}</td>
+            </tr>
+            <tr>
+                <th>Costo:</th>
+                <td>{{paciente.costo}} COL$</td>
+            </tr>
+            <tr>
+                <th>Forma de pago:</th>
+                <td>{{paciente.forma_de_pago}}</td>
+            </tr>
+            <tr>
+                <th>Fecha:</th>
+                <td>{{paciente.fecha}}</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+{% endblock  %}

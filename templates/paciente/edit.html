@@ -1,0 +1,25 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %} Editar Paciente {{ paciente }} {% endblock  %}
+
+{% block 'styles' %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/form.css" %}">
+{% endblock  %}
+
+{% block 'content' %}
+    <div class="container">
+        {% include "paciente/partials/msg_success.html" %}
+
+        <span class='btn-aux'>
+            <a href="{% url "paciente" %}" class='btn btn-detail'>Volver atrás</a>
+        </span>
+
+        {# el method='PUT' se usa para actualizar pero aqui usamos el post #}
+        <form action="{% url "paciente_edit" id=id %}" method='POST'>
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Guardar">
+        </form>
+    </div>
+{% endblock  %}

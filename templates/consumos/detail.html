@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %} Consumo {{ consumo }} {% endblock  %}
+
+{% block 'content' %}
+    <div class="container">
+        <span class='btn-aux'>
+            <a href="{% url "consumo" %}" class='btn btn-detail'>Volver atrás</a>
+        </span>
+
+        <table>
+            <tr>
+                <th>Producto:</th>
+                <td>{{consumo.producto}}</td>
+            </tr>
+            <tr>
+                <th>Costo:</th>
+                <td>{{consumo.costo}} COL$</td>
+            </tr>
+            <tr>
+                <th>Fecha:</th>
+                <td>{{consumo.fecha}}</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+{% endblock  %}

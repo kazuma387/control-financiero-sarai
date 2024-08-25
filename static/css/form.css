@@ -1,0 +1,158 @@
+h3 {
+    margin: 20px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-secondary);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%; 
+    min-width: 252px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px; 
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+textarea {
+    height: 50px;
+    resize: none; 
+}
+
+  /* Estilos opcionales para mejorar la apariencia */
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primary); /* Color de resaltado al enfocar */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+input[type="submit"] {
+    background-color: var(--color-btn-save);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* formularios de login y registrarse */
+.order {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.order a {
+    font-size: 80%;
+    padding: 5px;
+    color: var(--color-primary);
+    text-align: center;
+    text-decoration: none;
+}
+
+.order a:hover {
+    color: var(--color-btn-edit-hover);
+}
+
+/* boton formulario de login y registro */
+.submit {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    min-width: 111px;
+}
+
+.submit:hover {
+    background-color: var(--color-tertiary);
+}
+
+.helptext {
+    display: none;
+}
+
+/* formulario de logout */
+.form_navbar {
+    background-color: var(--color-primary);
+    padding: 17px 0;
+    border-radius: 0;
+    box-shadow: none;
+    width: 50%; 
+    min-width: 70px;
+}
+
+.button_form {
+    color: var(--color-text);
+    background-color: inherit;
+    border: none;
+    margin: 0 25px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.button_form:hover {
+    color: var(--color-text-2);
+    background-color: var(--color-primary);
+}
+
+/* del mensaje */
+.alert-success {
+    background: #4CAF50;
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+/* mensaje de error del login */
+.errorlist.nonfield {
+    background: var(--color-btn-delete);
+    color: var(--color-text);
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+/* mensaje de error en register representante*/
+.errorlist li {
+    background: var(--color-btn-delete);
+    color: var(--color-text);
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    list-style-type: none;
+}

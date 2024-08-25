@@ -1,0 +1,44 @@
+<ul class='list'>
+    {% for consumo in consumos %}
+    <li>
+        {{consumo.producto}}
+        <span>
+            <a href="{% url "consumo_view" id=consumo.id  %}" class='btn btn-detail'>Ver</a>
+
+            {% if perms.control_financiero.change_consumo %}
+                <a href="{% url "consumo_edit" id=consumo.id  %}" class='btn btn-edit'>Editar</a>
+            {% else %}
+                <a href="javascript:void(0);" class='btn btn-edit btn-disabled' title="No tienes permiso para editar">Editar</a>
+            {% endif %}
+
+            {% if perms.control_financiero.delete_consumo %}
+                <a href="{% url "consumo_delete" id=consumo.id  %}" class='btn btn-delete'>Borrar</a>
+            {% else %}
+                <a href="javascript:void(0);" class='btn btn-delete btn-disabled' title="No tienes permiso para borrar">Borrar</a>
+            {% endif %}
+        </span>
+    </li>
+    {% endfor %}
+
+    {% if no_results_message %}
+        <li>{{ no_results_message }}</li>
+    {% endif %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if consumos.has_previous %}
+                <a href="?page=1">Primera</a>
+                <a href="?page={{ consumos.previous_page_number }}&search={{ search_query }}">Anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ consumos.number }} de {{ consumos.paginator.num_pages }}
+            </span>
+    
+            {% if consumos.has_next %}
+                <a href="?page={{ consumos.next_page_number }}&search={{ search_query }}">Siguiente</a>
+                <a href="?page={{ consumos.paginator.num_pages }}&search={{ search_query }}">Última</a>
+            {% endif %}
+        </span>
+    </div>
+</ul>

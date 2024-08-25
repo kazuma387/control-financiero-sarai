@@ -1,0 +1,35 @@
+{% load static %}
+<nav>
+    <div class="container-navbar">
+        <div class="container-navbar-logo">
+            <a href="{% url "index" %}">
+                <img src="{% static "img/logo-2.png" %}" alt="logo">
+            </a>
+        </div>
+
+        <ul class="links">
+            <li class="link"><a href="{% url "index" %}">Inicio</a></li>
+            <li class="link"><a href="{% url "paciente" %}">Pacientes</a></li>
+            <li class="link"><a href="{% url "consumo" %}">Gastos</a></li>
+            <li class="link"><a href="{% url "total_costos" %}">Totales</a></li>
+            
+            {% if request.user.is_authenticated %}
+            <li class="link">
+                <form class="form_navbar" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="button_form" type="submit">salir</button>
+                </form>
+            </li>
+
+                {% else %}
+                    <li class="link">
+                        <a href="{% url "login" %}">Ingresar</a>
+                    </li>
+                {% endif %}
+        </ul>
+
+        <div class="toggle">
+            |||
+        </div>
+    </div>
+</nav>

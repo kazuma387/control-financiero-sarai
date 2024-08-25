@@ -1,0 +1,82 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %} Inicio {% endblock  %}
+
+{% block 'styles' %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/cards.css" %}">
+{% endblock  %}
+
+{% block 'content' %}
+<div class="container-cards">
+    <h1>Control financiero</h1>
+    
+    {% if request.user.is_authenticated %}
+    <h5>
+        {{ user.username | upper }}, te doy la bienvenida <a href="{% url 'admin:index' %}"><i class="fas fa-cog"></i></a>
+    </h5>
+    {% endif %}
+
+    <section class="articles">
+        <article>
+        <div class="article-wrapper">
+            <figure>
+            <img src="{% static "img/dentista-paciente.jpg" %}" alt="" />
+            </figure>
+            <div class="article-body">
+            <h2>Pacientes</h2>
+            <p>
+                Nuestro sistema de control de pacientes permite añadir, ver, editar y eliminar registros de manera eficiente. Además, realiza un seguimiento preciso de los ingresos por paciente, optimizando así la gestión y mejorando la atención médica.
+            </p>
+            <a href="{% url 'paciente' %}" class="read-more">
+                Ver más <span class="sr-only">Pacientes</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            </div>
+        </div>
+        </article>
+        <article>
+
+        <div class="article-wrapper">
+            <figure>
+                <img src="{% static "img/gasto-odontologia.jpg" %}" alt="" />
+            </figure>
+            <div class="article-body">
+                <h2>Gastos</h2>
+                <p>
+                    El sistema de control de gastos permite registrar, visualizar, editar y eliminar gastos eficientemente. Ofrece un seguimiento detallado por categorías, facilitando la optimización de recursos y mejorando la eficiencia económica de la práctica.
+                </p>
+                <a href="{% url 'consumo' %}" class="read-more">
+                Ver más <span class="sr-only">Gastos y costos</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                </a>
+            </div>
+        </div>
+        </article>
+        <article>
+            
+            <div class="article-wrapper">
+            <figure>
+                <img src="{% static "img/dental-finance.jpg" %}" alt="" />
+            </figure>
+            <div class="article-body">
+                <h2>Totales</h2>
+                <p>
+                    El sistema de totales muestra ingresos por año, mes o día, desglosando ingresos de pacientes y gastos. Calcula automáticamente las ganancias, proporcionando una visión clara de la rentabilidad para facilitar el análisis financiero y la toma de decisiones.
+                </p>
+                <a href="{% url 'total_costos' %}" class="read-more">
+                Ver más <span class="sr-only">Totales</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                </a>
+            </div>
+            </div>
+        </article>
+    </section>
+</div>
+{% endblock  %}
